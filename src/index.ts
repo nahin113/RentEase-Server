@@ -20,24 +20,24 @@
 // connectDB()
 
 import dotenv from "dotenv";
-import app from "../app.js";
-import connectDB from "../db/database.js";
+import app from "./app.js";
+import connectDB from "./db/database.js";
 
 dotenv.config();
 
-const handler = async (req: any, res: any) => {
-    try {
-        await connectDB();
+const startServer = async () => {
+  try {
+    await connectDB();
 
-        return app(req, res);
-    } catch (error) {
-        console.error("Server initialization error:", error);
+    const port = process.env.PORT || 5000;
 
-        return res.status(500).json({
-            success: false,
-            message: "Internal Server Error",
-        });
-    }
+    app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+    });
+  } catch (error) {
+    console.error("Server startup failed:", error);
+    process.exit(1);
+  }
 };
 
-export default handler;
+startServer();

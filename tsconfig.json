@@ -16,5 +16,5 @@
     "forceConsistentCasingInFileNames": true
   },
 
-  "include": ["src", "src/api/index.ts"]
+  "include": ["src"]
 }
