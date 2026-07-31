@@ -6,14 +6,15 @@ dotenv.config({
   path: "./.env",
 });
 
-const port = process.env.PORT || 5000;
+// const port = process.env.PORT || 5000;
 
-connectDB().then(()=> {
-  app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
-}).catch(err => {
-  console.error("MongoDB connection error", err)
-  process.exit(1)
-})
+// connectDB().then(()=> {
+//   app.listen(port, () => {
+//   console.log(`Example app listening on port ${port}`);
+// });
+// }).catch(err => {
+//   console.error("MongoDB connection error", err)
+//   process.exit(1)
+// })
 
+connectDB()
