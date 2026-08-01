@@ -50,6 +50,17 @@ app.use(
   })
 );
 
+import connectDB from "./db/database.js";
+
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    next(err);
+  }
+});
+
 import healthCheckRouter from "./routes/healthcheck.routes.js";
 import userRouter from "./routes/user.routes.js";
 
@@ -58,6 +69,14 @@ app.use("/api", userRouter);
 
 app.get("/", (req, res) => {
   res.send("Rentease Backend Server Connected");
+});
+
+app.use((err: any, req: any, res: any, next: any) => {
+  console.error(err);
+  res.status(err.statusCode || 500).json({
+    success: false,
+    message: err.message || "Internal Server Error",
+  });
 });
 
 export default app;

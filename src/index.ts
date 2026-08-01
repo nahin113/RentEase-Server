@@ -25,19 +25,11 @@ import connectDB from "./db/database.js";
 
 dotenv.config();
 
-const startServer = async () => {
-  try {
-    await connectDB();
+connectDB().catch((err) => console.error("MongoDB connection error:", err));
 
-    const port = process.env.PORT || 5000;
+if (!process.env.VERCEL) {
+  const port = process.env.PORT || 5000;
+  app.listen(port, () => console.log(`Server running on port ${port}`));
+}
 
-    app.listen(port, () => {
-      console.log(`Server running on port ${port}`);
-    });
-  } catch (error) {
-    console.error("Server startup failed:", error);
-    process.exit(1);
-  }
-};
-
-startServer();
+export default app;
