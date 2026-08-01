@@ -1,5 +1,5 @@
-import app from "../src/app.ts";
-import connectDB from "../src/db/database.ts";
+import app from "../dist/app.js";
+import connectDB from "../dist/db/database.js";
 
 connectDB().catch((err) => console.error("MongoDB connection error:", err));
 
