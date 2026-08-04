@@ -33,7 +33,7 @@ export interface IUser extends Document {
     };
     roommateBio?: string;
     socialLinks?: {
-        linkedin?: string;
+        facebook?: string;
         instagram?: string;
     };
     profileCompleted: boolean;
@@ -138,7 +138,7 @@ const UserSchema = new Schema<IUser>(
             default: ''
         },
         socialLinks: {
-            linkedin: { type: String, default: '' },
+            facebook: { type: String, default: '' },
             instagram: { type: String, default: '' }
         },
         profileCompleted: {

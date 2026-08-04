@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { User } from '../models/user.models.js';
 import { ApiResponse } from '../utils/api-response.js';
 import { APIError } from '../utils/api-error.js';
-import { AuthenticatedRequest } from '../middlewares/auth.middleware.js';
+
 
 export class UserController {
     // Get all users with filters
@@ -139,7 +139,7 @@ export class UserController {
             if (roommateBio !== undefined) user.roommateBio = roommateBio;
             if (socialLinks !== undefined) {
                 user.socialLinks = {
-                    linkedin: socialLinks.linkedin || '',
+                    facebook: socialLinks.facebook || '',
                     instagram: socialLinks.instagram || ''
                 };
             }
@@ -166,7 +166,7 @@ export class UserController {
             ];
             
             const hasNeighborhoods = Array.isArray(user.preferredNeighborhoods) && user.preferredNeighborhoods.length > 0;
-            const hasSocials = !!(user.socialLinks?.linkedin || user.socialLinks?.instagram);
+            const hasSocials = !!(user.socialLinks?.facebook || user.socialLinks?.instagram);
 
             user.profileCompleted = requiredFields.every(field => field !== undefined && field !== null && field !== '') && hasNeighborhoods && hasSocials;
 
