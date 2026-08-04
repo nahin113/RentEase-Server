@@ -8,9 +8,9 @@ export interface IUser extends Document {
     image?: string;
     role: 'user' | 'admin' | 'moderator';
     banned: boolean;
-    accountType: 'student' | 'professional' | 'other';
+    accountType: 'renter' | 'professional' | 'other';
     bio?: string;
-    skills: string[];
+    habits: string[];
     phoneNumber?: string;
     university?: string;
     department?: string;
@@ -78,15 +78,15 @@ const UserSchema = new Schema<IUser>(
         },
         accountType: {
             type: String,
-            enum: ['student', 'professional', 'other'],
-            default: 'student'
+            enum: ['renter', 'professional', 'other'],
+            default: 'renter'
         },
         bio: {
             type: String,
             maxlength: [500, 'Bio cannot exceed 500 characters'],
             default: ''
         },
-        skills: {
+        habits: {
             type: [String],
             default: []
         },
@@ -154,7 +154,7 @@ const UserSchema = new Schema<IUser>(
 // Index for faster queries
 // UserSchema.index({ email: 1 }); // unique index already
 UserSchema.index({ role: 1, banned: 1 });
-UserSchema.index({ skills: 1 });
+UserSchema.index({ habits: 1 });
 
 // Virtual property
 UserSchema.virtual('isActive').get(function() {

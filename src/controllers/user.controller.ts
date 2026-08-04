@@ -8,12 +8,12 @@ export class UserController {
     // Get all users with filters
     static async getUsers(req: Request, res: Response) {
         try {
-            const { role, accountType, skill, search } = req.query;
+            const { role, accountType, habit, search } = req.query;
             
             const filter: any = {};
             if (role) filter.role = role;
             if (accountType) filter.accountType = accountType;
-            if (skill) filter.skills = { $in: [skill] };
+            if (habit) filter.habits = { $in: [habit] };
             if (search) {
                 filter.$or = [
                     { name: { $regex: search, $options: 'i' } },
@@ -186,11 +186,11 @@ export class UserController {
     // Update user profile (general)
     static async updateUser(req: Request, res: Response) {
         try {
-            const { name, bio, skills, accountType } = req.body;
+            const { name, bio, habits, accountType } = req.body;
             
             const user = await User.findByIdAndUpdate(
                 req.params.id,
-                { name, bio, skills, accountType },
+                { name, bio, habits, accountType },
                 { new: true, runValidators: true }
             );
             
