@@ -11,6 +11,32 @@ export interface IUser extends Document {
     accountType: 'student' | 'professional' | 'other';
     bio?: string;
     skills: string[];
+    phoneNumber?: string;
+    university?: string;
+    department?: string;
+    academicYear?: string;
+    targetMoveInDate?: Date;
+    leaseDuration?: string;
+    budgetRange?: {
+        min: number;
+        max: number;
+    };
+    preferredNeighborhoods?: string[];
+    roomType?: string;
+    lifestyleHabits?: {
+        cleanliness?: string;
+        sleepSchedule?: string;
+        guestPolicy?: string;
+        diet?: string;
+        smoking?: string;
+        pets?: string;
+    };
+    roommateBio?: string;
+    socialLinks?: {
+        linkedin?: string;
+        instagram?: string;
+    };
+    profileCompleted: boolean;
     createdAt: Date;
     updatedAt: Date;
 }
@@ -63,6 +89,61 @@ const UserSchema = new Schema<IUser>(
         skills: {
             type: [String],
             default: []
+        },
+        phoneNumber: {
+            type: String,
+            default: ''
+        },
+        university: {
+            type: String,
+            default: ''
+        },
+        department: {
+            type: String,
+            default: ''
+        },
+        academicYear: {
+            type: String,
+            default: ''
+        },
+        targetMoveInDate: {
+            type: Date
+        },
+        leaseDuration: {
+            type: String,
+            default: ''
+        },
+        budgetRange: {
+            min: { type: Number, default: 0 },
+            max: { type: Number, default: 0 }
+        },
+        preferredNeighborhoods: {
+            type: [String],
+            default: []
+        },
+        roomType: {
+            type: String,
+            default: ''
+        },
+        lifestyleHabits: {
+            cleanliness: { type: String, default: '' },
+            sleepSchedule: { type: String, default: '' },
+            guestPolicy: { type: String, default: '' },
+            diet: { type: String, default: '' },
+            smoking: { type: String, default: '' },
+            pets: { type: String, default: '' }
+        },
+        roommateBio: {
+            type: String,
+            default: ''
+        },
+        socialLinks: {
+            linkedin: { type: String, default: '' },
+            instagram: { type: String, default: '' }
+        },
+        profileCompleted: {
+            type: Boolean,
+            default: false
         }
     },
     {
