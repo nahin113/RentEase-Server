@@ -37,7 +37,7 @@ export class UserController {
     // Get current authenticated user
     static async getCurrentUser(req: Request, res: Response) {
         try {
-            let userId = (req as any).user?.id;
+            let userId = (req as any).params.id;
             if (!userId) {
                 // Mock user for testing without auth token
                 const mockUser = await User.findOne();
@@ -81,8 +81,9 @@ export class UserController {
     // Update profile (authenticated renter)
     static async updateProfile(req: Request, res: Response) {
         try {
-            let userId = (req as any).user?.id;
-            if (!userId) {
+            
+        let userId = (req as any).body?._id;   
+        if (!userId) {
                 // Mock user for testing without auth token
                 const mockUser = await User.findOne();
                 if (mockUser) userId = mockUser._id.toString();

@@ -8,7 +8,7 @@ const router = Router();
 router.get('/users', UserController.getUsers);
 
 // Current User profile routes (Must be registered BEFORE /users/:id to avoid conflict)
-router.get('/users/me', UserController.getCurrentUser);
+router.get('/users/me/:id', UserController.getCurrentUser);
 router.patch('/users/profile', UserController.updateProfile);
 
 // Parameter routes
