@@ -13,6 +13,7 @@ export interface IUser extends Document {
     habits: string[];
     phoneNumber?: string;
     university?: string;
+    renterType?: string;
     department?: string;
     academicYear?: string;
     targetMoveInDate?: Date;
@@ -97,6 +98,11 @@ const UserSchema = new Schema<IUser>(
         university: {
             type: String,
             default: ''
+        },
+        renterType: {
+            type: String,
+            enum: ['bachelor', 'family'],
+            default: 'bachelor'
         },
         department: {
             type: String,

@@ -92,6 +92,7 @@ export class UserController {
 
             const {
                 phoneNumber,
+                renterType,
                 university,
                 department,
                 academicYear,
@@ -114,6 +115,7 @@ export class UserController {
 
             // Update fields
             if (phoneNumber !== undefined) user.phoneNumber = phoneNumber;
+            if (renterType !== undefined) user.renterType = renterType;
             if (university !== undefined) user.university = university;
             if (department !== undefined) user.department = department;
             if (academicYear !== undefined) user.academicYear = academicYear;
@@ -150,6 +152,7 @@ export class UserController {
             const requiredFields = [
                 user.phoneNumber,
                 user.university,
+                user.renterType,
                 user.department,
                 user.academicYear,
                 user.targetMoveInDate,
