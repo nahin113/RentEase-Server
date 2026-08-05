@@ -141,9 +141,11 @@ app.use(async (req, res, next) => {
 // 4. API Routes
 import healthCheckRouter from "./routes/healthcheck.routes.js";
 import userRouter from "./routes/user.routes.js";
+import roommateRouter from "./routes/roommate.routes.js";
 
 app.use("/api/v1/healthcheck", healthCheckRouter);
 app.use("/api", userRouter);
+app.use("/api", roommateRouter);
 
 app.get("/", (req, res) => {
   res.send("Rentease Backend Server Connected");
