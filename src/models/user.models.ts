@@ -8,7 +8,7 @@ export interface IUser extends Document {
     image?: string;
     role: 'user' | 'admin' | 'moderator';
     banned: boolean;
-    accountType: 'renter' | 'professional' | 'other';
+    accountType: 'renter' | 'professional' | 'landlord' | 'other';
     bio?: string;
     habits: string[];
     phoneNumber?: string;
@@ -79,7 +79,7 @@ const UserSchema = new Schema<IUser>(
         },
         accountType: {
             type: String,
-            enum: ['renter', 'professional', 'other'],
+            enum: ['renter', 'professional', 'landlord', 'other'],
             default: 'renter'
         },
         bio: {

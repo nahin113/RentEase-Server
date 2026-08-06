@@ -142,8 +142,10 @@ app.use(async (req, res, next) => {
 import healthCheckRouter from "./routes/healthcheck.routes.js";
 import userRouter from "./routes/user.routes.js";
 import roommateRouter from "./routes/roommate.routes.js";
+import landlordRouter from "./routes/landlord.routes.js";
 
 app.use("/api/v1/healthcheck", healthCheckRouter);
+app.use("/api/v1/landlord", landlordRouter);
 app.use("/api", userRouter);
 app.use("/api", roommateRouter);
 
